@@ -1,5 +1,6 @@
+from classes.Post import Post
 class User:
-    def __init__(self,username,posts,connections,birth_year,real_name,gender,city):
+    def __init__(self,username,posts,connections,birth_year,real_name,gender,city,commented,viewed):
         self.username = username
         self.posts = posts[]
         self.connections = connections[]
@@ -7,11 +8,20 @@ class User:
         self.real_name = real_name
         self.gender = gender
         self.city = city
+        self.commented = commented[]
+        self.viewed = viewed[]
 
     def add_connection(self,other_user,conxn_type):
-        connection = {"user":other_user,"type":conxn_type}
-        self.connections.append(connection)
+        self.connections.append({"user":other_user,"type":conxn_type})
         
     def add_post(self,post):    
         if post.owner == self.username:
             self.posts.append(post)
+
+    def add_history(self,someones_post):
+        for x in someones_post.views:
+            if self.username == someones_post.views[x].seen_by:
+                self.viewed.append(someones_post)
+        for y in someones_post.comments:
+            if self.username == someones_post.comments[y].yapper:
+                self.commented.append(someones_post)                
