@@ -1,3 +1,5 @@
+from classes.User import User
+
 class Post:
     def __init__(self, owner, comments, content, views, created):
         self.owner = owner
