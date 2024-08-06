@@ -2,7 +2,7 @@
 
 
 
-def main:
+def main():
 
 
 main()
