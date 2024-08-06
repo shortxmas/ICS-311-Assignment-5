@@ -6,6 +6,7 @@ import datetime
 def task4main():
 # word cloud of interesting posts   
 
+# create users and add their connections    
     person1 = User(username="bob12",birth_year=1988,zipcode=55378)
     person2 = User(username="its_meg",birth_year=1996,real_name="megan ashby",gender="she/her",zipcode=90039)
     person3 = User(username="payuspaytas",birth_year=1988,gender="f",zipcode=61032)
@@ -17,6 +18,7 @@ def task4main():
     person2.add_connection("bob12","friends")
     person2.add_connection("payuspaytas","read posts by")
     
+# create posts and populate authors' post lists    
     postA = Post(owner="payuspaytas",content="like do dogs have brains??? serious question",created=datetime.datetime(2013,7,3,16,19,0,0,None,0))
     person3.add_post(postA)
     postB = Post(owner="muskrat",content="Always think about this with my little fluffy dog. My big dog does look like a wolf.",created=datetime.datetime(2024,5,4,9,7,0,0,None,0))
@@ -26,6 +28,9 @@ def task4main():
     postD = Post(owner="its_meg",content="hey guys look at my new pup! i think i'll name it michelle obama <3",created=datetime.datetime.now())
     person1.add_post(postD)       
     posts = [postA, postB, postC, postD]
+
+# populate users' posts with comments and views
+
 
 def main():
     task4main()
