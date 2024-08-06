@@ -12,4 +12,6 @@ class User:
         connection = {"user":other_user,"type":conxn_type}
         self.connections.append(connection)
         
-        
+    def add_post(self,post):    
+        if post.owner == self.username:
+            self.posts.append(post)
