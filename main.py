@@ -2,6 +2,7 @@ from classes.Post import Post
 from classes.User import User
 import datetime
 import random
+import math
 
 
 def task4main():
@@ -34,6 +35,7 @@ def task4main():
 
 # populate users' posts with comments and views
     nonsense = "When using AI to write content as a helping functionality, the ethical dimension involved tends to be utilitarian lens because the writer’s quality of life may increase since using AI can save time that could be used for activities that positively impact one’s life."
+    engagement = posts.copy()
     for x in posts:
         for y in users:
             for z in users[y].connections:
@@ -41,7 +43,8 @@ def task4main():
                     posts[x].add_view(users[y].username,date.datetime.now())
                     posts[x].add_comment(random.choices(nonsense,k=150),users[y].username)
                     users[y].add_history(posts[x])
-                    
+        # average views per minute for each post
+        engagement[x] = len(posts[x].views)/((datetime.datetime.now()-posts[x].created).total_seconds()/60)             
 
 def main():
     task4main()
