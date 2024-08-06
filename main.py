@@ -77,8 +77,46 @@ def task4main():
         # average views per minute for each post
         engagement[x] = len(posts[x].views)/((datetime.datetime.now()-posts[x].created).total_seconds()/60)             
 
+def task2main():
+    # Sample Data
+    users = [
+        {"username": "user1", "age": 25, "gender": "female", "posts": 10, "comments": 5, "views": 100, "location": "NY"},
+        {"username": "user2", "age": 30, "gender": "male", "posts": 15, "comments": 3, "views": 200, "location": "CA"},
+        {"username": "user3", "age": 22, "gender": "female", "posts": 5, "comments": 10, "views": 50, "location": "TX"},
+    ]
+
+    posts = [
+        {"post_id": "post1", "author": "user1", "views": 100, "content": "Post content 1"},
+        {"post_id": "post2", "author": "user2", "views": 200, "content": "Post content 2"},
+        {"post_id": "post3", "author": "user1", "views": 50, "content": "Post content 3"},
+        {"post_id": "post4", "author": "user3", "views": 30, "content": "Post content 4"},
+    ]
+
+    connections = [
+        {"from": "user1", "to": "user2", "type": "friends"},
+        {"from": "user2", "to": "user3", "type": "follows"},
+    ]
+
+    # Create SocialMediaGraph object
+    social_media_graph = SocialMediaGraph(users, posts, connections)
+
+    # Define criteria dynamically
+    criteria = [
+        lambda user: user["posts"] > 5,       # Number of posts (high)
+        lambda user: user["gender"] == "female", # Gender
+        lambda user: user["views"] > 50,       # Number of views (high)
+    ]
+
+    # Highlight interesting users based on criteria
+    social_media_graph.highlight_interesting_users(criteria)
+
+    # Visualize the graph
+    social_media_graph.visualize_graph()
+
+
 def main():
     task1main()
     task4main()
+    task2main()
 
 main()
