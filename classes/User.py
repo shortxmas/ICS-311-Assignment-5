@@ -1,15 +1,14 @@
-from classes.Post import Post
 class User:
     def __init__(self,username,posts,connections,birth_year,real_name,gender,zipcode,commented,viewed):
         self.username = username
-        self.posts = posts[]
-        self.connections = connections[]
+        self.posts = posts
+        self.connections = connections
         self.birth_year = birth_year
         self.real_name = real_name
         self.gender = gender
         self.zipcode = zipcode
-        self.commented = commented[]
-        self.viewed = viewed[]
+        self.commented = commented
+        self.viewed = viewed
 
     def add_connection(self,other_user,conxn_type):
         self.connections.append({"user":other_user,"type":conxn_type})

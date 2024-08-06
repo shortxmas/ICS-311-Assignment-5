@@ -1,9 +1,40 @@
 from classes.Post import Post
 from classes.User import User
+from classes.ImportantPosts import ImportantPosts
 import datetime
 import random
 import math
 
+def task1main():
+    # Example users
+    users = [
+        User("user1", [], [], 1990, "User One", "M", "12345", [], []),
+        User("user2", [], [], 1992, "User Two", "F", "67890", [], []),
+        User("user3", [], [], 1985, "User Three", "M", "54321", [], []),
+        User("user4", [], [], 1995, "User Four", "F", "98765", [], []),
+        User("user5", [], [], 2000, "User Five", "M", "11223", [], []),
+    ]
+
+    # Example posts
+    posts = [
+        Post("user1", [{"quote": "Nice post!", "yapper": "user2"}, {"quote": "Great content!", "yapper": "user3"}], 
+             "Post content 1", [{"seen_by": "user2", "datetime": "2023-08-01"}, {"seen_by": "user3", "datetime": "2023-08-01"}], "2023-08-01"),
+        Post("user2", [{"quote": "Interesting perspective.", "yapper": "user1"}], 
+             "Post content 2", [{"seen_by": "user1", "datetime": "2023-08-02"}, {"seen_by": "user3", "datetime": "2023-08-02"}], "2023-08-02"),
+        Post("user3", [{"quote": "Thanks for sharing.", "yapper": "user4"}], 
+             "Post content 3", [{"seen_by": "user4", "datetime": "2023-08-03"}, {"seen_by": "user5", "datetime": "2023-08-03"}], "2023-08-03"),
+        Post("user4", [{"quote": "Loved it!", "yapper": "user3"}, {"quote": "Very informative.", "yapper": "user2"}], 
+             "Post content 4", [{"seen_by": "user1", "datetime": "2023-08-04"}, {"seen_by": "user2", "datetime": "2023-08-04"}, {"seen_by": "user3", "datetime": "2023-08-04"}], "2023-08-04"),
+        Post("user5", [{"quote": "Awesome!", "yapper": "user1"}, {"quote": "Helpful post.", "yapper": "user4"}], 
+             "Post content 5", [{"seen_by": "user1", "datetime": "2023-08-05"}, {"seen_by": "user2", "datetime": "2023-08-05"}], "2023-08-05"),
+    ]
+
+    import_posts = ImportantPosts(users, posts)
+    import_posts.create_graph(importance_criteria="comments")
+    import_posts.draw_graph()
+
+    # Change importance criteria
+    import_posts.update_graph(importance_criteria="views")
 
 def task4main():
 # word cloud of interesting posts   
@@ -47,6 +78,7 @@ def task4main():
         engagement[x] = len(posts[x].views)/((datetime.datetime.now()-posts[x].created).total_seconds()/60)             
 
 def main():
+    task1main()
     task4main()
 
 main()

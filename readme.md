@@ -1,0 +1,1 @@
+Make sure to run ```pip install matplotlib``` and ```pip install networkx``` in order to get the ImportantPosts.py working
