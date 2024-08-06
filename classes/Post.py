@@ -11,5 +11,5 @@ class Post:
     def add_comment(self,text,author):
         self.comments.append({"quote":text,"yapper":author})
     
-    def add_view(self,viewer,view_date,view_time):
-        self.views.append({"seen_by":viewer,"date":view_date,"time":view_time})
+    def add_view(self,viewer,view_datetime):
+        self.views.append({"seen_by":viewer,"datetime":view_datetime})
