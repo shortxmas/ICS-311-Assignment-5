@@ -1,5 +1,5 @@
 class Post:
-    def __init__(self, owner, comments, content, viewed_by, created):
+    def __init__(self, owner, comments, content, views, created):
         self.owner = owner
         self.comments = comments[]
         self.content = content
