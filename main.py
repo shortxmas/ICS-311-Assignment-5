@@ -77,8 +77,9 @@ def task4main():
         # average views per minute for each post
         engagement[x] = len(posts[x].views)/((datetime.datetime.now()-posts[x].created).total_seconds()/60)   
 
-    InterestingPostCloud(users)
-
+    cloud = InterestingPostCloud(users)
+    cloud.restrictions()
+    
 def task2main():
     # Sample Data
     users = [
